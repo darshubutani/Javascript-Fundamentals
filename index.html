@@ -1,0 +1,139 @@
+<script>
+//Functions
+/* 
+function describeCountry(country, population ,capitalCity){
+ const data=( country +" has "+ population+" million people and its capital city is "+capitalCity );
+ return data;
+}
+const country1 = describeCountry ('Finland', 6, 'Helsinki');
+const country2 = describeCountry('India',1124,'Delhi');
+const country3 = describeCountry('Japan',10,'Tokyo');
+console.log(country1,country2,country3); */
+
+
+//Function Declarations vs. Expressions 
+//using decaration
+/*
+
+function percentageOfWorld1(population){
+    return (population/7900) * 100;
+   
+}
+var country1 =  percentageOfWorld1(790);
+var country2 =  percentageOfWorld1(66);
+var country3 =  percentageOfWorld1(11);
+
+console.log(" It's about "+country1+"% of the world population ");
+console.log(" It's about "+country2+"% of the world population ");
+console.log(" It's about "+country3+"% of the world population ");
+//using expression
+const percentageOfWorld2 = function(population){
+    return (population/7900) * 100;
+}  
+var country1 =  percentageOfWorld1(790);
+var country2 =  percentageOfWorld1(66);
+var country3 =  percentageOfWorld1(11);
+
+console.log(" It's about "+country1+"% of the world population ");
+console.log(" It's about "+country2+"% of the world population ");
+console.log(" It's about "+country3+"% of the world population ");
+
+//Arrow Functions 
+const percentageOfWorld3 = population =>(population/7900)*100;
+var country1 =  percentageOfWorld1(790);
+var country2 =  percentageOfWorld1(66);
+var country3 =  percentageOfWorld1(11);
+
+console.log(" It's about "+country1+"% of the world population ");
+console.log(" It's about "+country2+"% of the world population ");
+console.log(" It's about "+country3+"% of the world population ");
+
+*/
+//: Functions Calling Other Functions 
+/*
+function percentageOfWorld(population){
+    return(population/7900) * 100;    
+}
+
+function describePopulation(country,population){
+//const populationPer=    
+percentageOfWorld(population);
+console.log(country + " has "+ population +" million people, which is about " + percentageOfWorld(population) +"% of the world");
+return describePopulation;
+}
+describePopulation('China',1141);
+describePopulation('India',1234);
+describePopulation('Japan',11);
+*/
+
+//Coding Challenge #1
+/*
+  let scoreOne;
+  let scoreTwo;
+  let scoreThree ;
+
+  const calcAverage = (scoreOne,scoreTwo,scoreThree) => (scoreOne + scoreTwo+ scoreThree)/3; 
+  let aveDolphine = calcAverage(44,23,71);
+  let aveKoalas = calcAverage(65,54,49);
+  console.log (aveDolphine,aveKoalas);
+
+  function checkWinner(aveDolphine,aveKoalas){
+
+    if(aveDolphine >= 2*aveKoalas){
+        console.log("Dolphines win "+aveDolphine +" vs "+aveKoalas);
+        return;
+    }
+    
+    else if(aveKoalas >= 2*aveDolphine){
+        console.log("Koalas win "+ aveKoalas +" vs "+aveDolphine);
+        return;
+    }
+    else{
+        console.log(" No team wins the trophy ");
+        return;
+    }
+
+  }
+checkWinner(aveDolphine,aveKoalas);
+*/
+
+//Array
+/*
+ const populations =[1123,11,66,999];  
+// const check = populations.lenth =4 ? 'True' : 'false';
+//console.log(check);
+console.log(populations.length===4);
+
+ function percentageOfWorld1(populations){
+   return (populations/7900) * 100;
+}
+const percentages= [
+   percentageOfWorld1(populations[0]),
+   percentageOfWorld1(populations[1]),
+   percentageOfWorld1(populations[2]),
+   percentageOfWorld1(populations[3])
+];
+console.log (percentages); */
+
+// Basic Array Operations (Methods) 
+const neighbours = ['India', 'China', 'Afghanistan'];
+console.log(neighbours);
+var test = neighbours.push('Utopia');
+console.log(neighbours);
+console.log(test);
+neighbours.pop();
+console.log(neighbours);
+
+if (neighbours.includes('China')) {
+    console.log("It's a neighbour country :D");
+}
+else {
+    console.log("'Probably not a neighbour country :D' ");
+}
+const a = neighbours.indexOf('Afghanistan');
+console.log(a);
+const neighbours[2] = ('Afghan');
+console.log()
+
+
+</script>
