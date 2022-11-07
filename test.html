@@ -20,26 +20,54 @@ solution exists, return an array of two arrays - a distribution of a where each
 of these two arrays are of equal length and each contains unique elements.
 
 <script>
-  const a = [1, 1, 2, 2, 3, 3, 3, 5, 7, 4];
-  const middleIndex = a.length / 2;
-  /*if((array.length) % 2 == 1){
-        console.log("Enter Even array");
-    }
-    else{
-
-    } */
-  const array1 = a.slice(0, middleIndex);
-  const array2 = a.slice(-middleIndex);
+  const arr = [2, 1, 2, 3, 3, 4];
+  const n = arr.length;
+  console.log("Length of array is: "+ arr.length)
+  const middleIndex = arr.length / 2;
+  const array1 =[];//arr.slice(0, middleIndex);
+  const array2 = [];//arr.slice(-middleIndex);
   console.log(array1 + "\n" + array2);
 
-  for(let i=0;i<a.length;i++){
-    if(a[i]==a[i+1]){
-    array1.shift(a[i+1]);
-    array2.unshift(a[i]);      
-    }
-    else{
+  function countFreq(arr, n) {
+    //debugger
+    let visited = Array.from({ length: n }, (_, i) => false);
 
+    // Traverse through array elements and
+    // count frequencies
+   
+    for (let i = 0; i < n; i++) {
+      // Skip this element if already processed
+      if (visited[i] == true) continue;
+      else {
+        if(array1.length < (n/2))
+        array1.push(arr[i]);
+        else {
+          array2.push(arr[i]);
+        }
+      }
+
+      // Count frequency
+      let count = 1;
+      for (let j = i + 1; j < n; j++) {
+        if (arr[i] == arr[j]) {
+          visited[j] = true;
+          count++;
+        }
+      }
+      if (count == 2) {
+        // console.log(arr[i] + " you are twice");
+        if (!array1.includes(arr[i])) {
+          array1.push(arr[i]);
+        } 
+        if (!array2.includes(arr[i])) {
+          array2.push(arr[i]);
+        }
+      } else if (count > 2) {
+        console.log("Empty");
+        break;
+      }
     }
-    console.log(array1 + "\n" + array2);
+    console.log("Array is: "+arr + "\narray 1 is: " + array1 + "\narray 2 is: " + array2);
   }
+  countFreq(arr, n);
 </script>
