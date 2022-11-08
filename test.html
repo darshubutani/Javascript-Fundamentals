@@ -1,0 +1,153 @@
+TEST: divideArray [JS] Given an array of integers of even length, your task is
+to split it into two arrays of equal length such that all the numbers are unique
+in each of them. There may be more than one possible answer, in which case you
+may return any of them. If there are no possible answers, return an empty array.
+Hint: Count the number of occurrences of each integer in a. If there are
+integers occurring more than twice, then there is no solution. Next, put the
+integers occurring twice into both answer arrays. Finally, put all other numbers
+in the answer arrays, following the condition that they should have equal sizes.
+Example For a = [2, 1, 2, 3, 3, 4], the output can be divideArray(a) = [[2, 1,
+3], [2, 3, 4]]. Answers like [[1, 2, 3], [2, 3, 4]] or [[4, 2, 3], [3, 2, 1]]
+would also be considered correct. For a = [1, 2, 2, 1], the output can be
+divideArray(a) = [[1, 2], [2, 1]]. Again, there are other possible answers. For
+a = [2, 2, 3, 3, 2, 2], the output should be divideArray(a) = []. No matter how
+we try to split this array, there will be at least two 2s in at least one of the
+resulting arrays. So the answer is []. Input/Output [execution time limit] 4
+seconds (js) [input] array.integer a An array of integers. It is guaranteed that
+it has even length. Guaranteed constraints: 2 ≤ a.length ≤ 104, 1 ≤ a[i] ≤ 105.
+[output] array.array.integer Return an empty array if there is no solution. If a
+solution exists, return an array of two arrays - a distribution of a where each
+of these two arrays are of equal length and each contains unique elements.
+
+<!-- <script>
+  var startTime = performance.now();
+  const arr = [2, 1, 2, 3, 4, 3];
+  const n = arr.length;
+  console.log("Length of array is: " + arr.length)
+  const middleIndex = arr.length / 2;
+  const array1 = [];//arr.slice(0, middleIndex);
+  const array2 = [];//arr.slice(-middleIndex);
+  console.log(array1 + "\n" + array2);
+
+  function countFreq(arr, n) {
+    //debugger
+    let visited = Array.from({ length: n }, (_, i) => false);
+    // Traverse through array elements and
+    // count frequencies
+
+    for (let i = 0; i < n; i++) {
+      // Skip this element if already processed
+      if (visited[i] == true) continue;
+      else {
+        if (array1.length < (n / 2))
+          array1.push(arr[i]);
+        else {
+          array2.push(arr[i]);
+        }
+      }
+
+      // Count frequency
+      let count = 1;
+      for (let j = i + 1; j < n; j++) {
+        if (arr[i] == arr[j]) {
+          visited[j] = true;
+          count++;
+        }
+      }
+      if (count == 2) {
+        // console.log(arr[i] + " you are twice");
+        if (!array1.includes(arr[i])) {
+          array1.push(arr[i]);
+        }
+        if (!array2.includes(arr[i])) {
+          array2.push(arr[i]);
+        }
+      }
+      if (count > 2) {
+        console.log("Empty");
+        return;
+      }
+    }
+    console.log("Array is: " + arr + "\narray 1 is: " + array1 + "\narray 2 is: " + array2);
+  }
+  countFreq(arr, n);
+  var endTime = performance.now()
+  console.log(`Call to doSomething took ${endTime - startTime} milliseconds`);
+</script> -->
+
+//code2
+<!-- <script>
+  var startTime = performance.now()
+  const a =  [2, 1, 2, 3, 3, 4];
+  const arrMid = (a.length / 2);
+  console.log(a);
+
+  //divide array 
+  const array1 = [];// a.slice(0, arrMid);
+  const array2 = []; a.slice(-arrMid);
+  const count = {};
+//  console.log(typeof (count));
+
+  function countAccur(a) {
+    for (const element of a) {
+      count[element] = count[element] ? count[element] + 1 : 1;
+      if (count[element] == 2) {
+        for (let i = 0; i < a.length; i++) {
+          if (array1.includes(a[i])) continue;
+          else {
+             if (array1.length < arrMid) {
+            array1.push(a[i]);
+             }
+          }
+          if (array2.includes(a[i])) continue;
+           else {
+             if (array2.length < arrMid) {
+            array2.push(a[i]);
+          }
+        }
+      }
+    }
+   
+  }
+  console.log("Array1 is: " + array1 + "\nArray2 is: " + array2);
+  }
+  countAccur(a);
+  var endTime = performance.now()
+  console.log(`Call to function took ${endTime - startTime} milliseconds`);
+
+</script> -->
+
+
+//at home
+<script>
+  var startTime = performance.now();
+  const a = [2, 1, 2, 3, 3, 4];
+  let arrMid = (a.length / 2);
+  console.log(a);
+  const array1 = a.slice(0, arrMid);
+  const array2 = a.slice(-arrMid);
+  console.log(array1, array2);
+
+  const result = array1.filter((item, index) => array1.indexOf(item) !== index);
+  
+  console.log("Dupe is: " + result);
+  //for array 1
+
+  if (result == false) {
+    console.log("Empty object");
+  }
+  else {
+    array1.shift();
+    if (array1.includes(a[arrMid])) {
+      console.log("true");  
+    }
+    array1.push(a[arrMid]);
+    array2.shift();
+    array2.push(Number(result));
+    console.log(array1, array2)
+  }
+
+  var endTime = performance.now()
+  console.log(`Call to function took ${endTime - startTime} milliseconds`);
+
+</script>
