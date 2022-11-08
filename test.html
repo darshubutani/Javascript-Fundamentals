@@ -20,28 +20,27 @@ solution exists, return an array of two arrays - a distribution of a where each
 of these two arrays are of equal length and each contains unique elements.
 
 <!-- <script>
-   var startTime = performance.now();
-  const arr = [2, 1, 2, 3, 4,3];
+  var startTime = performance.now();
+  const arr = [2, 1, 2, 3, 4, 3];
   const n = arr.length;
-  console.log("Length of array is: "+ arr.length)
+  console.log("Length of array is: " + arr.length)
   const middleIndex = arr.length / 2;
-  const array1 =[];//arr.slice(0, middleIndex);
+  const array1 = [];//arr.slice(0, middleIndex);
   const array2 = [];//arr.slice(-middleIndex);
   console.log(array1 + "\n" + array2);
 
   function countFreq(arr, n) {
     //debugger
     let visited = Array.from({ length: n }, (_, i) => false);
-
     // Traverse through array elements and
     // count frequencies
-   
+
     for (let i = 0; i < n; i++) {
       // Skip this element if already processed
       if (visited[i] == true) continue;
       else {
-        if(array1.length < (n/2))
-        array1.push(arr[i]);
+        if (array1.length < (n / 2))
+          array1.push(arr[i]);
         else {
           array2.push(arr[i]);
         }
@@ -59,17 +58,17 @@ of these two arrays are of equal length and each contains unique elements.
         // console.log(arr[i] + " you are twice");
         if (!array1.includes(arr[i])) {
           array1.push(arr[i]);
-        } 
+        }
         if (!array2.includes(arr[i])) {
           array2.push(arr[i]);
         }
-      } 
+      }
       if (count > 2) {
         console.log("Empty");
         return;
       }
     }
-    console.log("Array is: "+arr + "\narray 1 is: " + array1 + "\narray 2 is: " + array2);
+    console.log("Array is: " + arr + "\narray 1 is: " + array1 + "\narray 2 is: " + array2);
   }
   countFreq(arr, n);
   var endTime = performance.now()
@@ -77,7 +76,7 @@ of these two arrays are of equal length and each contains unique elements.
 </script> -->
 
 //code2
-<script>
+<!-- <script>
   var startTime = performance.now()
   const a =  [2, 1, 2, 3, 3, 4];
   const arrMid = (a.length / 2);
@@ -116,28 +115,39 @@ of these two arrays are of equal length and each contains unique elements.
   var endTime = performance.now()
   console.log(`Call to function took ${endTime - startTime} milliseconds`);
 
+</script> -->
+
+
+//at home
+<script>
+  var startTime = performance.now();
+  const a = [2, 1, 2, 3, 3, 4];
+  let arrMid = (a.length / 2);
+  console.log(a);
+  const array1 = a.slice(0, arrMid);
+  const array2 = a.slice(-arrMid);
+  console.log(array1, array2);
+
+  const result = array1.filter((item, index) => array1.indexOf(item) !== index);
+  
+  console.log("Dupe is: " + result);
+  //for array 1
+
+  if (result == false) {
+    console.log("Empty object");
+  }
+  else {
+    array1.shift();
+    if (array1.includes(a[arrMid])) {
+      console.log("true");  
+    }
+    array1.push(a[arrMid]);
+    array2.shift();
+    array2.push(Number(result));
+    console.log(array1, array2)
+  }
+
+  var endTime = performance.now()
+  console.log(`Call to function took ${endTime - startTime} milliseconds`);
+
 </script>
-
-
-// <!-- //at home
-// <script>
-//   const a = [2, 1, 2, 3, 3, 4];
-//   const arrMid = (a.length / 2);
-//   console.log(a);
-//   const array1 = a.slice(0, arrMid);
-//   const array2 = a.slice(-arrMid);
-//   console.log(array1, array2);
-
-//   function divideArray(a) {
-//     for (let i = 0; i < a.length; i++) {
-//       //console.log(array1.includes(a[i]));
-//       if (array1.includes(a[i])) continue;
-//       else {   
-//         array1.push(a[i]);
-//       }
-//     }
-//     console.log("array 1 is: " + array1);
- 
-//   }
-//   divideArray(a);
-// </script> -->
