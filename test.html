@@ -18,8 +18,9 @@ it has even length. Guaranteed constraints: 2 ≤ a.length ≤ 104, 1 ≤ a[i] �
 [output] array.array.integer Return an empty array if there is no solution. If a
 solution exists, return an array of two arrays - a distribution of a where each
 of these two arrays are of equal length and each contains unique elements.
-<!-- 
-<script>
+
+<!-- <script>
+   var startTime = performance.now();
   const arr = [2, 1, 2, 3, 4,3];
   const n = arr.length;
   console.log("Length of array is: "+ arr.length)
@@ -71,69 +72,72 @@ of these two arrays are of equal length and each contains unique elements.
     console.log("Array is: "+arr + "\narray 1 is: " + array1 + "\narray 2 is: " + array2);
   }
   countFreq(arr, n);
+  var endTime = performance.now()
+  console.log(`Call to doSomething took ${endTime - startTime} milliseconds`);
 </script> -->
 
 //code2
 <script>
-  const a = [2, 1, 2, 3, 3, 4];
+  var startTime = performance.now()
+  const a =  [2, 1, 2, 3, 3, 4];
   const arrMid = (a.length / 2);
   console.log(a);
 
   //divide array 
   const array1 = [];// a.slice(0, arrMid);
-  const array2 = []; //a.slice(-arrMid);
+  const array2 = []; a.slice(-arrMid);
   const count = {};
-  console.log(typeof (count));
+//  console.log(typeof (count));
 
   function countAccur(a) {
     for (const element of a) {
       count[element] = count[element] ? count[element] + 1 : 1;
       if (count[element] == 2) {
-        console.log("twice");
-
         for (let i = 0; i < a.length; i++) {
           if (array1.includes(a[i])) continue;
           else {
-           // if (array1.length < arrMid) {
-              array1.push(a[i]);
-           // }
+             if (array1.length < arrMid) {
+            array1.push(a[i]);
+             }
           }
           if (array2.includes(a[i])) continue;
-          else {
-           // if (array2.length <= arrMid) {
-              array2.push(a[i]);
-           // }
+           else {
+             if (array2.length < arrMid) {
+            array2.push(a[i]);
           }
-
         }
       }
-
     }
-    console.log(count);
-    console.log("Array1 is: " + array1 + "\nArray2 is: " + array2);
+   
+  }
+  console.log("Array1 is: " + array1 + "\nArray2 is: " + array2);
   }
   countAccur(a);
+  var endTime = performance.now()
+  console.log(`Call to function took ${endTime - startTime} milliseconds`);
+
 </script>
 
-<!-- //at home
-<script>
-  const a = [2, 1, 2, 3, 3, 4];
-  const arrMid = (a.length / 2);
-  console.log(a);
-  const array1 = a.slice(0, arrMid);
-  const array2 = a.slice(-arrMid);
-  console.log(array1, array2);
 
-  function divideArray(a) {
-    for (let i = 0; i < a.length; i++) {
-      //console.log(array1.includes(a[i]));
-      if (array1.includes(a[i])) continue;
-      else {   
-        array1.push(a[i]);
-      }
-    }
-    console.log("array 1 is: " + array1);
+// <!-- //at home
+// <script>
+//   const a = [2, 1, 2, 3, 3, 4];
+//   const arrMid = (a.length / 2);
+//   console.log(a);
+//   const array1 = a.slice(0, arrMid);
+//   const array2 = a.slice(-arrMid);
+//   console.log(array1, array2);
+
+//   function divideArray(a) {
+//     for (let i = 0; i < a.length; i++) {
+//       //console.log(array1.includes(a[i]));
+//       if (array1.includes(a[i])) continue;
+//       else {   
+//         array1.push(a[i]);
+//       }
+//     }
+//     console.log("array 1 is: " + array1);
  
-  }
-  divideArray(a);
-</script> -->
+//   }
+//   divideArray(a);
+// </script> -->
